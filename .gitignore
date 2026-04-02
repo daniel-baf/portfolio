@@ -1,1 +1,4 @@
 .stitch_api_key
+node_modules
+dist
+.astro

@@ -1,0 +1,29 @@
+---
+import TimelineSection from './TimelineSection.astro';
+
+interface StudyItem {
+  date: string;
+  role: string;
+  company: string;
+  desc: string;
+}
+
+interface Props {
+  studies: {
+    sectionLabel: string;
+    sectionTitle: string;
+    items: StudyItem[];
+  };
+}
+
+const { studies } = Astro.props;
+---
+
+<TimelineSection
+  id="studies"
+  scene="pixel"
+  titleId="studies-title"
+  sectionLabel={studies.sectionLabel}
+  sectionTitle={studies.sectionTitle}
+  items={studies.items}
+/>

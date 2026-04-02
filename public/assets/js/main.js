@@ -1,0 +1,34 @@
+import { initGSAP } from './core/gsap.js';
+import { prefersReducedMotion } from './core/runtime.js';
+import { initActiveNav } from './features/active-nav.js';
+import { initAvatarFlip } from './features/avatar-flip.js';
+import { initBinaryRain } from './features/binary-rain.js';
+import { initGsapAnimations } from './features/gsap-animations.js';
+import { initLoadingIntro } from './features/loading-intro.js';
+import { initNavbarScroll } from './features/navbar-scroll.js';
+import { initProjectParticles } from './features/project-particles.js';
+import { initScrollReveal } from './features/scroll-reveal.js';
+import { initSkillBars } from './features/skill-bars.js';
+import { initSkillPopup } from './features/skill-popup.js';
+import { initTerminalWriter } from './features/terminal-writer.js';
+import { initThemeSystem } from './features/theme-system.js';
+import { initTypewriter } from './features/typewriter.js';
+import { initVideoScenes } from './features/video-scenes.js';
+
+initLoadingIntro(prefersReducedMotion);
+initGSAP();
+const { html } = initThemeSystem();
+initBinaryRain();
+initTypewriter();
+initNavbarScroll();
+initVideoScenes();
+initTerminalWriter(prefersReducedMotion);
+initAvatarFlip(prefersReducedMotion);
+initSkillPopup();
+initActiveNav();
+initScrollReveal();
+initSkillBars();
+initGsapAnimations(prefersReducedMotion);
+initProjectParticles();
+
+console.log('[MAINFRAME CONSOLE] System initialized. Theme:', html.dataset.theme);

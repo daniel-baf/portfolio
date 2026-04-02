@@ -1,0 +1,27 @@
+---
+interface FooterLink {
+  href: string;
+  label: string;
+}
+
+interface Props {
+  footer: {
+    copy: string;
+    links: FooterLink[];
+  };
+}
+
+const { footer } = Astro.props;
+const [copyBefore = '', copyAfter = ''] = footer.copy.split('daniel-baf');
+---
+
+<footer role="contentinfo">
+  <p class="footer-copy">{copyBefore}<span>daniel-baf</span>{copyAfter}</p>
+  <div class="footer-links" aria-label="Enlaces de Daniel Bautista">
+    {
+      footer.links.map((link) => (
+        <a href={link.href} target="_blank" rel="noopener">{link.label}</a>
+      ))
+    }
+  </div>
+</footer>

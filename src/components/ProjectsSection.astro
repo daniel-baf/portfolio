@@ -1,0 +1,49 @@
+---
+import SectionHeading from './SectionHeading.astro';
+
+interface ProjectItem {
+  code: string;
+  lang: string;
+  name: string;
+  desc: string;
+  href: string;
+  id: string;
+}
+
+interface Props {
+  projects: {
+    sectionLabel: string;
+    sectionTitle: string;
+    cta: { href: string; id: string; label: string };
+    items: ProjectItem[];
+  };
+}
+
+const { projects } = Astro.props;
+---
+
+<section id="projects" aria-labelledby="projects-title" data-scene="desk">
+  <SectionHeading label={projects.sectionLabel} title={projects.sectionTitle} titleId="projects-title" />
+
+  <div class="projects-grid">
+    {
+      projects.items.map((project) => (
+        <article class="project-card">
+          <div class="project-header">
+            <span class="project-code">{project.code}</span>
+            <span class="project-lang">{project.lang}</span>
+          </div>
+          <h3 class="project-name">{project.name}</h3>
+          <p class="project-desc">{project.desc}</p>
+          <a href={project.href} class="project-link" target="_blank" rel="noopener" id={project.id}>Ver repo</a>
+        </article>
+      ))
+    }
+  </div>
+
+  <div class="projects-footer">
+    <a href={projects.cta.href} class="btn btn-outline" target="_blank" rel="noopener" id={projects.cta.id}>
+      {projects.cta.label}
+    </a>
+  </div>
+</section>

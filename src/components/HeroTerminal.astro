@@ -1,0 +1,29 @@
+<aside class="hero-terminal" aria-label="Terminal de presentacion">
+  <div class="terminal-topbar">
+    <span class="terminal-dot"></span>
+    <span class="terminal-dot"></span>
+    <span class="terminal-dot"></span>
+    <p class="terminal-title">daniel@portfolio: ~/workspace</p>
+  </div>
+  <div class="terminal-body">
+    <div class="terminal-output" id="terminal-output" aria-live="polite">
+      <p class="terminal-line-static">$ docker compose exec -it backend sh</p>
+      <p class="terminal-line">[+] Running 1/1</p>
+      <p class="terminal-line">✔ Container db        Running</p>
+      <p class="terminal-line">✔ Container redis     Running</p>
+      <p class="terminal-line">✔ Container backend   Running</p>
+      <p class="terminal-line">Attaching to backend_1</p>
+      <p class="terminal-line">backend_1  | /entrypoint.sh: checking configuration...</p>
+      <p class="terminal-line">backend_1  | Loading environment variables [ok]</p>
+      <p class="terminal-line">backend_1  | validating python dependencies [ok]</p>
+      <p class="terminal-line">backend_1  | validating node dependencies [ok]</p>
+      <p class="terminal-line">backend_1  | postgres:5432 reachable</p>
+      <p class="terminal-line">backend_1  | redis:6379 reachable</p>
+      <p class="terminal-line">backend_1  | migrations status: up to date</p>
+      <p class="terminal-line">backend_1  | cache warmup completed</p>
+      <p class="terminal-line">backend_1  | shell granted</p>
+      <p class="terminal-line-static">root@backend_1:/app# _</p>
+    </div>
+    <p class="terminal-status" id="terminal-status">status: open_to_freelance = true</p>
+  </div>
+</aside>

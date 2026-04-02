@@ -1,0 +1,99 @@
+---
+import HeroTerminal from './HeroTerminal.astro';
+
+interface Props {
+  navLinks: { href: string; id: string; label: string }[];
+  themes: { theme: string; icon: string; ariaLabel: string; title: string; active: boolean }[];
+  hero: {
+    tag: string;
+    name: string;
+    summary: string;
+    metrics: { value: string; label: string }[];
+  };
+}
+
+const { navLinks, themes, hero } = Astro.props;
+---
+
+<nav id="navbar" role="navigation" aria-label="Navegacion principal">
+  <a href="#hero" class="nav-logo">&lt;daniel-baf /&gt;</a>
+  <ul class="nav-links">
+    {
+      navLinks.map((link) => (
+        <li><a href={link.href} id={link.id}>{link.label}</a></li>
+      ))
+    }
+  </ul>
+  <div class="theme-selector">
+    {
+      themes.map((item) => (
+        <button
+          class={`theme-btn ${item.active ? 'active' : ''}`}
+          data-theme={item.theme}
+          aria-label={item.ariaLabel}
+          title={item.title}
+        >
+          <span class="theme-icon">{item.icon}</span>
+        </button>
+      ))
+    }
+  </div>
+</nav>
+
+<header id="hero" role="banner" data-scene="core">
+  <div class="hero-bg" aria-hidden="true"></div>
+
+  <div class="hero-content">
+    <div class="hero-main">
+      <div class="hero-copy">
+        <p class="hero-tag">{hero.tag}</p>
+
+        <div class="hero-avatar-frame fade-up">
+          <picture>
+            <source srcset="/assets/images/avatar.webp" type="image/webp" />
+            <img
+              src="/assets/images/avatar.png"
+              alt="Avatar pixel art de Daniel Eduardo Bautista Fuentes"
+              class="hero-avatar"
+              width="160"
+              height="160"
+            />
+          </picture>
+        </div>
+
+        <h1 class="hero-name" data-text={hero.name}>
+          {hero.name}
+        </h1>
+
+        <p class="hero-title">
+          &gt; <span id="typed-text"></span><span class="typed-cursor">_</span>
+        </p>
+
+        <p class="hero-summary">{hero.summary}</p>
+
+        <div class="hero-metrics" aria-label="Resumen profesional">
+          {
+            hero.metrics.map((metric) => (
+              <div class="metric">
+                <span class="metric-value">{metric.value}</span>
+                <span class="metric-label">{metric.label}</span>
+              </div>
+            ))
+          }
+        </div>
+
+        <div class="hero-cta">
+          <a href="#projects" class="btn btn-primary" id="cta-projects">Ver proyectos</a>
+          <a href="#contact" class="btn btn-outline" id="cta-contact">Contactame</a>
+        </div>
+      </div>
+
+      <HeroTerminal />
+    </div>
+  </div>
+
+  <div class="scroll-indicator" aria-hidden="true">
+    <span>SCROLL</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</header>

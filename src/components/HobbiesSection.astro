@@ -1,0 +1,33 @@
+---
+import SectionHeading from './SectionHeading.astro';
+
+interface HobbyItem {
+  label: string;
+  name: string;
+}
+
+interface Props {
+  hobbies: {
+    sectionLabel: string;
+    sectionTitle: string;
+    items: HobbyItem[];
+  };
+}
+
+const { hobbies } = Astro.props;
+---
+
+<section id="hobbies" aria-labelledby="hobbies-title" data-scene="desk">
+  <SectionHeading label={hobbies.sectionLabel} title={hobbies.sectionTitle} titleId="hobbies-title" />
+
+  <div class="hobbies-grid">
+    {
+      hobbies.items.map((hobby) => (
+        <div class="hobby-card">
+          <span class="hobby-label">{hobby.label}</span>
+          <p class="hobby-name">{hobby.name}</p>
+        </div>
+      ))
+    }
+  </div>
+</section>

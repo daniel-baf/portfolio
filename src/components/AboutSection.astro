@@ -1,0 +1,43 @@
+---
+import PhotoContainer from './PhotoContainer.astro';
+import SectionHeading from './SectionHeading.astro';
+
+interface Props {
+  about: {
+    sectionLabel: string;
+    sectionTitle: string;
+    paragraphs: string[];
+    tags: string[];
+  };
+}
+
+const { about } = Astro.props;
+---
+
+<section id="about" aria-labelledby="about-title" data-scene="core">
+  <SectionHeading label={about.sectionLabel} title={about.sectionTitle} titleId="about-title" />
+
+  <div class="about-grid">
+    <PhotoContainer />
+
+    <div class="about-text fade-up">
+      {
+        about.paragraphs.map((copy) => (
+          <p>{copy}</p>
+        ))
+      }
+
+      <div class="about-tags">
+        {
+          about.tags.map((tag) => (
+            <button type="button" class="tag tag-button" data-skill={tag}>{tag}</button>
+          ))
+        }
+      </div>
+      <div class="skill-popup" id="skillPopup" role="status" aria-live="polite" hidden>
+        <p class="skill-popup-title"></p>
+        <p class="skill-popup-copy"></p>
+      </div>
+    </div>
+  </div>
+</section>

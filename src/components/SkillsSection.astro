@@ -1,0 +1,37 @@
+---
+import SectionHeading from './SectionHeading.astro';
+
+interface SkillItem {
+  label: string;
+  name: string;
+  meta: string;
+  level: number;
+}
+
+interface Props {
+  skills: {
+    sectionLabel: string;
+    sectionTitle: string;
+    items: SkillItem[];
+  };
+}
+
+const { skills } = Astro.props;
+---
+
+<section id="skills" aria-labelledby="skills-title" data-scene="pixel">
+  <SectionHeading label={skills.sectionLabel} title={skills.sectionTitle} titleId="skills-title" />
+
+  <div class="skills-grid">
+    {
+      skills.items.map((skill) => (
+        <div class="skill-card fade-up">
+          <span class="skill-label">{skill.label}</span>
+          <p class="skill-name">{skill.name}</p>
+          <small class="skill-meta">{skill.meta}</small>
+          <div class="skill-bar-wrap"><div class="skill-bar" data-level={skill.level}></div></div>
+        </div>
+      ))
+    }
+  </div>
+</section>

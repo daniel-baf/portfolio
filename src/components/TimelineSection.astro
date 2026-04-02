@@ -1,0 +1,39 @@
+---
+import SectionHeading from './SectionHeading.astro';
+
+interface TimelineItem {
+  date: string;
+  role: string;
+  company: string;
+  desc: string;
+}
+
+interface Props {
+  id: string;
+  scene: string;
+  titleId: string;
+  sectionLabel: string;
+  sectionTitle: string;
+  items: TimelineItem[];
+}
+
+const { id, scene, titleId, sectionLabel, sectionTitle, items } = Astro.props;
+---
+
+<section id={id} aria-labelledby={titleId} data-scene={scene}>
+  <SectionHeading label={sectionLabel} title={sectionTitle} titleId={titleId} />
+
+  <div class="timeline" role="list">
+    {
+      items.map((item) => (
+        <article class="timeline-item" role="listitem">
+          <div class="timeline-dot" aria-hidden="true"></div>
+          <p class="timeline-date">{item.date}</p>
+          <h3 class="timeline-role">{item.role}</h3>
+          <p class="timeline-company">{item.company}</p>
+          <p class="timeline-desc">{item.desc}</p>
+        </article>
+      ))
+    }
+  </div>
+</section>

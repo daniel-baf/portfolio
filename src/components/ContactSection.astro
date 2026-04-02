@@ -1,0 +1,53 @@
+---
+import SectionHeading from './SectionHeading.astro';
+
+interface ContactLink {
+  href: string;
+  id: string;
+  label: string;
+  external: boolean;
+}
+
+interface Props {
+  contact: {
+    sectionLabel: string;
+    sectionTitle: string;
+    intro: string;
+    email: string;
+    note: string;
+    links: ContactLink[];
+  };
+}
+
+const { contact } = Astro.props;
+---
+
+<section id="contact" aria-labelledby="contact-title" data-scene="pixel">
+  <SectionHeading label={contact.sectionLabel} title={contact.sectionTitle} titleId="contact-title" />
+
+  <div class="contact-box fade-up">
+    <p class="contact-intro">{contact.intro}</p>
+    <p class="contact-email">
+      <a href={`mailto:${contact.email}`} class="contact-email-link" id="email-link">
+        {contact.email}
+      </a>
+    </p>
+    <p class="contact-note">{contact.note}</p>
+
+    <div class="contact-links">
+      {
+        contact.links.map((link) => (
+          <a
+            href={link.href}
+            class="social-btn"
+            id={link.id}
+            target={link.external ? '_blank' : undefined}
+            rel={link.external ? 'noopener' : undefined}
+          >
+            {link.label}
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>

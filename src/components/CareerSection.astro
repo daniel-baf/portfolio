@@ -1,0 +1,29 @@
+---
+import TimelineSection from './TimelineSection.astro';
+
+interface TimelineItem {
+  date: string;
+  role: string;
+  company: string;
+  desc: string;
+}
+
+interface Props {
+  career: {
+    sectionLabel: string;
+    sectionTitle: string;
+    items: TimelineItem[];
+  };
+}
+
+const { career } = Astro.props;
+---
+
+<TimelineSection
+  id="career"
+  scene="core"
+  titleId="career-title"
+  sectionLabel={career.sectionLabel}
+  sectionTitle={career.sectionTitle}
+  items={career.items}
+/>
