@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Daniel Eduardo Bautista Fuentes – Backend Developer, Cloud Infrastructure Engineer y enfoque actual en GCP. Portfolio personal." />
+  <meta name="author" content="Daniel Eduardo Bautista Fuentes" />
+  <meta property="og:title" content="Daniel Bautista | Dev Portfolio" />
+  <meta property="og:description" content="Backend Developer, Cloud Infrastructure Engineer y especialización actual en GCP" />
+  <meta property="og:type" content="website" />
+  <title>Daniel Bautista | Dev Portfolio</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+<!-- Binary Rain Canvas (background) -->
+<canvas id="binaryCanvas"></canvas>
+
+<div class="video-stage" aria-hidden="true">
+  <video class="bg-video active" data-scene="core" autoplay muted loop playsinline preload="auto">
+    <source src="assets/video/Futuristic_Computing_Background_Generation.mp4" type="video/mp4" />
+  </video>
+  <video class="bg-video" data-scene="desk" autoplay muted loop playsinline preload="auto">
+    <source src="assets/video/Futuristic_Developer_Desk_Pixel_Art.mp4" type="video/mp4" />
+  </video>
+  <video class="bg-video" data-scene="pixel" autoplay muted loop playsinline preload="auto">
+    <source src="assets/video/Pixel_Art_Tech_Video_Generation.mp4" type="video/mp4" />
+  </video>
+  <div class="video-overlay"></div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     NAV
+════════════════════════════════════════════ -->
+<nav id="navbar" role="navigation" aria-label="Navegación principal">
+  <a href="#hero" class="nav-logo">&lt;daniel-baf /&gt;</a>
+  <ul class="nav-links">
+    <li><a href="#about"    id="nav-about">about</a></li>
+    <li><a href="#career"   id="nav-career">career</a></li>
+    <li><a href="#studies"  id="nav-studies">studies</a></li>
+    <li><a href="#skills"   id="nav-skills">skills</a></li>
+    <li><a href="#projects" id="nav-projects">projects</a></li>
+    <li><a href="#hobbies"  id="nav-hobbies">hobbies</a></li>
+    <li><a href="#contact"  id="nav-contact">contact</a></li>
+  </ul>
+  <button id="themeToggle" type="button" aria-label="Activar tema claro">light</button>
+</nav>
+
+<!-- ══════════════════════════════════════════
+     HERO
+════════════════════════════════════════════ -->
+<header id="hero" role="banner" data-scene="core">
+  <div class="hero-bg" aria-hidden="true"></div>
+
+  <div class="hero-content">
+    <div class="hero-main">
+      <div class="hero-copy">
+        <p class="hero-tag">Backend engineer · cloud track · futurist computing</p>
+
+        <div class="hero-avatar-frame fade-up">
+          <img
+            src="assets/images/avatar.png"
+            alt="Avatar pixel art de Daniel Eduardo Bautista Fuentes"
+            class="hero-avatar"
+            width="160" height="160"
+          />
+        </div>
+
+        <h1 class="hero-name" data-text="Daniel Bautista">
+          Daniel Bautista
+        </h1>
+
+        <p class="hero-title">
+          &gt; <span id="typed-text"></span><span class="typed-cursor">_</span>
+        </p>
+
+        <p class="hero-summary">
+          Desarrollo backend, automatización e infraestructura con foco en sistemas
+          confiables. Tengo 2 años de experiencia profesional y me he estado
+          especializando en <strong>GCP</strong> mientras sigo fortaleciendo mi base en
+          arquitectura y cloud.
+        </p>
+
+        <div class="hero-metrics" aria-label="Resumen profesional">
+          <div class="metric">
+            <span class="metric-value">2 años</span>
+            <span class="metric-label">experiencia profesional</span>
+          </div>
+          <div class="metric">
+            <span class="metric-value">GCP</span>
+            <span class="metric-label">especialización en progreso</span>
+          </div>
+          <div class="metric">
+            <span class="metric-value">Backend</span>
+            <span class="metric-label">Python · Java · APIs · CI/CD</span>
+          </div>
+        </div>
+
+        <div class="hero-cta">
+          <a href="#projects" class="btn btn-primary" id="cta-projects">Ver proyectos</a>
+          <a href="#contact"  class="btn btn-outline"  id="cta-contact">Contáctame</a>
+        </div>
+      </div>
+
+      <aside class="hero-terminal fade-up" aria-label="Terminal de presentación">
+        <div class="terminal-topbar">
+          <span class="terminal-dot"></span>
+          <span class="terminal-dot"></span>
+          <span class="terminal-dot"></span>
+          <p class="terminal-title">terminal://daniel-bautista/profile</p>
+        </div>
+        <div class="terminal-body">
+          <p class="terminal-line terminal-line-static"><span id="terminal-line-0"></span></p>
+          <p class="terminal-line"><span class="terminal-prompt">&gt;</span> <span id="terminal-line-1"></span></p>
+          <p class="terminal-line"><span class="terminal-prompt">&gt;</span> <span id="terminal-line-2"></span></p>
+          <p class="terminal-line"><span class="terminal-prompt">&gt;</span> <span id="terminal-line-3"></span></p>
+          <p class="terminal-line"><span class="terminal-prompt">&gt;</span> <span id="terminal-line-4"></span></p>
+          <p class="terminal-line"><span class="terminal-prompt">&gt;</span> <span id="terminal-line-5"></span></p>
+          <p class="terminal-status">status: open_to_freelance = true</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <div class="scroll-indicator" aria-hidden="true">
+    <span>SCROLL</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════
+     ABOUT
+════════════════════════════════════════════ -->
+<section id="about" aria-labelledby="about-title" data-scene="core">
+  <div class="pixel-divider" aria-hidden="true"></div>
+  <p class="section-label">// 01 &gt; about.exe</p>
+  <h2 class="section-title" id="about-title">SOBRE MI</h2>
+
+  <div class="about-grid">
+    <div class="about-avatar-wrap fade-up" id="aboutAvatarCard">
+      <img
+        src="assets/images/avatar.png"
+        alt="Daniel Eduardo Bautista Fuentes"
+        class="about-avatar"
+        width="200" height="200"
+      />
+      <div class="status-badge">
+        <span class="status-dot"></span>
+        DISPONIBLE FREELANCE
+      </div>
+    </div>
+
+    <div class="about-text fade-up">
+      <p>
+        Soy <strong>Daniel Eduardo Bautista Fuentes</strong>, un dev guatemalteco
+        enfocado en construir sistemas que escalen y se mantengan bien. Mi experiencia
+        profesional es de 2 años, y el resto de mi crecimiento ha venido de estudio,
+        práctica constante y proyectos reales.
+      </p>
+      <p>
+        Me especializo en <strong>backend e infraestructura</strong>: desde APIs y pipelines
+        de CI/CD hasta despliegues automatizados en cloud, pasando por ERPs y
+        herramientas de cálculo para ingeniería civil. Actualmente he estado
+        profundizando especialmente en <strong>GCP</strong>.
+      </p>
+      <p>
+        Me interesa la tecnología aplicada con criterio: automatización, arquitectura,
+        cloud y herramientas que resuelvan problemas reales. Disfruto explorar nuevas
+        IAs, refinar procesos y seguir fortaleciendo mi base como ingeniero.
+      </p>
+
+      <div class="about-tags">
+        <button type="button" class="tag tag-button" data-skill="Python">Python</button>
+        <button type="button" class="tag tag-button" data-skill="Java">Java</button>
+        <button type="button" class="tag tag-button" data-skill="TypeScript">TypeScript</button>
+        <button type="button" class="tag tag-button" data-skill="Docker">Docker</button>
+        <button type="button" class="tag tag-button" data-skill="CI/CD">CI/CD</button>
+        <button type="button" class="tag tag-button" data-skill="GCP">GCP</button>
+        <button type="button" class="tag tag-button" data-skill="REST APIs">REST APIs</button>
+        <button type="button" class="tag tag-button" data-skill="SQL">SQL</button>
+        <button type="button" class="tag tag-button" data-skill="Angular">Angular</button>
+        <button type="button" class="tag tag-button" data-skill="Assembly">Assembly</button>
+        <button type="button" class="tag tag-button" data-skill="Linux">Linux</button>
+        <button type="button" class="tag tag-button" data-skill="Git">Git</button>
+      </div>
+      <div class="skill-popup" id="skillPopup" role="status" aria-live="polite" hidden>
+        <p class="skill-popup-title"></p>
+        <p class="skill-popup-copy"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     CAREER
+════════════════════════════════════════════ -->
+<section id="career" aria-labelledby="career-title" data-scene="core">
+  <div class="pixel-divider" aria-hidden="true"></div>
+  <p class="section-label">// 02 &gt; career.log</p>
+  <h2 class="section-title" id="career-title">TRAYECTORIA</h2>
+
+  <div class="timeline" role="list">
+
+    <article class="timeline-item" role="listitem">
+      <div class="timeline-dot" aria-hidden="true"></div>
+      <p class="timeline-date">2025 → PRESENTE</p>
+      <h3 class="timeline-role">PROJECT LEAD</h3>
+      <p class="timeline-company">Liderazgo técnico · Guatemala</p>
+      <p class="timeline-desc">
+        Coordinación de tareas y seguimiento del equipo, gestión de tickets,
+        apoyo en evaluación técnica de talento y acompañamiento del delivery.
+        También con responsabilidad sobre infraestructura cloud y automatización
+        de despliegues.
+      </p>
+    </article>
+
+    <article class="timeline-item" role="listitem">
+      <div class="timeline-dot" aria-hidden="true"></div>
+      <p class="timeline-date">2024</p>
+      <h3 class="timeline-role">BACKEND DEVELOPER</h3>
+      <p class="timeline-company">Desarrollo backend · Guatemala</p>
+      <p class="timeline-desc">
+        Diseño e implementación de APIs, integración con bases de datos y desarrollo
+        de módulos backend para sistemas empresariales, con foco en lógica de negocio,
+        servicios y procesos internos.
+      </p>
+    </article>
+
+    <article class="timeline-item" role="listitem">
+      <div class="timeline-dot" aria-hidden="true"></div>
+      <p class="timeline-date">2022 → PRESENTE</p>
+      <h3 class="timeline-role">FREELANCE DEVELOPER</h3>
+      <p class="timeline-company">Independiente · Remoto</p>
+      <p class="timeline-desc">
+        Proyectos de software a medida: sistema de cálculo de vigas estructurales
+        para ingeniería civil, ERP para ONG (gestión de pedidos, productos, clientes
+        y reportes). Atención directa a clientes y entrega end-to-end.
+      </p>
+    </article>
+
+    <article class="timeline-item" role="listitem">
+      <div class="timeline-dot" aria-hidden="true"></div>
+      <p class="timeline-date">2019 → DESDE LA U</p>
+      <h3 class="timeline-role">INICIOS PROGRAMANDO</h3>
+      <p class="timeline-company">Base técnica y formación universitaria</p>
+      <p class="timeline-desc">
+        Formación en algoritmos, estructuras de datos, programación orientada a
+        objetos, desarrollo web y arquitectura. Primeros proyectos académicos y
+        personales en Java, C++, Python y bajo nivel desde la universidad.
+      </p>
+    </article>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     STUDIES
+════════════════════════════════════════════ -->
+<section id="studies" aria-labelledby="studies-title" data-scene="pixel">
+  <div class="pixel-divider" aria-hidden="true"></div>
+  <p class="section-label">// 03 &gt; education.db</p>
+  <h2 class="section-title" id="studies-title">ESTUDIOS</h2>
+
+  <div class="timeline" role="list">
+
+    <article class="timeline-item" role="listitem">
+      <div class="timeline-dot" aria-hidden="true"></div>
+      <p class="timeline-date">2023 → PRESENTE</p>
+      <h3 class="timeline-role">INGENIERÍA EN INFORMÁTICA Y SISTEMAS</h3>
+      <p class="timeline-company">Universidad Rafael Landívar (URL) · Guatemala</p>
+      <p class="timeline-desc">
+        Enfoque en arquitectura de software, sistemas distribuidos, bases de datos
+        avanzadas y proyectos integradores. Desarrollo del ERP para ONG como
+        proyecto de donación universitaria.
+      </p>
+    </article>
+
+    <article class="timeline-item" role="listitem">
+      <div class="timeline-dot" aria-hidden="true"></div>
+      <p class="timeline-date">2019 → 2023</p>
+      <h3 class="timeline-role">INGENIERÍA EN INFORMÁTICA Y SISTEMAS</h3>
+      <p class="timeline-company">Universidad San Carlos de Guatemala (USAC) · CUNOC</p>
+      <p class="timeline-desc">
+        Fundamentos de ciencias de la computación: arquitectura de computadoras,
+        lenguaje ensamblador, estructuras de datos, compiladores,
+        análisis de algoritmos y desarrollo de software.
+      </p>
+    </article>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SKILLS
+════════════════════════════════════════════ -->
+<section id="skills" aria-labelledby="skills-title" data-scene="pixel">
+  <div class="pixel-divider" aria-hidden="true"></div>
+  <p class="section-label">// 04 &gt; skills.json</p>
+  <h2 class="section-title" id="skills-title">HABILIDADES</h2>
+
+  <div class="skills-grid">
+
+    <div class="skill-card fade-up">
+      <span class="skill-label">BE</span>
+      <p class="skill-name">Backend Dev</p>
+      <small class="skill-meta">Java · Python · Node.js · REST APIs</small>
+      <div class="skill-bar-wrap"><div class="skill-bar" data-level="88"></div></div>
+    </div>
+
+    <div class="skill-card fade-up">
+      <span class="skill-label">CL</span>
+      <p class="skill-name">Cloud & Infra</p>
+      <small class="skill-meta">GCP · Docker · CI/CD · Cloud Deployments</small>
+      <div class="skill-bar-wrap"><div class="skill-bar" data-level="82"></div></div>
+    </div>
+
+    <div class="skill-card fade-up">
+      <span class="skill-label">AU</span>
+      <p class="skill-name">Automatización</p>
+      <small class="skill-meta">Scripting · GitHub Actions · Pipelines</small>
+      <div class="skill-bar-wrap"><div class="skill-bar" data-level="80"></div></div>
+    </div>
+
+    <div class="skill-card fade-up">
+      <span class="skill-label">DB</span>
+      <p class="skill-name">Bases de Datos</p>
+      <small class="skill-meta">PostgreSQL · MySQL · SQLite</small>
+      <div class="skill-bar-wrap"><div class="skill-bar" data-level="85"></div></div>
+    </div>
+
+    <div class="skill-card fade-up">
+      <span class="skill-label">PL</span>
+      <p class="skill-name">Project Lead</p>
+      <small class="skill-meta">Gestión de equipos · Tickets · Evaluación</small>
+      <div class="skill-bar-wrap"><div class="skill-bar" data-level="78"></div></div>
+    </div>
+
+    <div class="skill-card fade-up">
+      <span class="skill-label">AI</span>
+      <p class="skill-name">AI-Assisted Dev</p>
+      <small class="skill-meta">MCPs · Copilot · LLM Workflows</small>
+      <div class="skill-bar-wrap"><div class="skill-bar" data-level="90"></div></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     PROJECTS
+════════════════════════════════════════════ -->
+<section id="projects" aria-labelledby="projects-title" data-scene="desk">
+  <div class="pixel-divider" aria-hidden="true"></div>
+  <p class="section-label">// 05 &gt; projects.git</p>
+  <h2 class="section-title" id="projects-title">PROYECTOS</h2>
+
+  <div class="projects-grid">
+
+    <article class="project-card">
+      <div class="project-header">
+        <span class="project-code">PY</span>
+        <span class="project-lang">Python / Ingeniería</span>
+      </div>
+      <h3 class="project-name">CÁLCULO DE VIGAS ESTRUCTURALES</h3>
+      <p class="project-desc">
+        Sistema para ingenieros civiles que calcula vigas con cargas gravitacionales,
+        flexiones y momentos. Proyecto freelance en desarrollo activo.
+      </p>
+      <a href="https://github.com/daniel-baf/calculo-vigas-estructurales"
+         class="project-link"
+         target="_blank" rel="noopener"
+         id="proj-vigas">Ver repo</a>
+    </article>
+
+    <article class="project-card">
+      <div class="project-header">
+        <span class="project-code">ERP</span>
+        <span class="project-lang">Full Stack / ERP</span>
+      </div>
+      <h3 class="project-name">ERP PARA ONG</h3>
+      <p class="project-desc">
+        Sistema de gestión para ONG: pedidos, productos, clientes y reportes.
+        Donación universitaria URL. Módulos de inventario, facturación y analítica.
+      </p>
+      <a href="https://github.com/daniel-baf/ERP-progra-web-url"
+         class="project-link"
+         target="_blank" rel="noopener"
+         id="proj-erp">Ver repo</a>
+    </article>
+
+    <article class="project-card">
+      <div class="project-header">
+        <span class="project-code">WEB</span>
+        <span class="project-lang">TypeScript / Angular</span>
+      </div>
+      <h3 class="project-name">WEB COMPILER</h3>
+      <p class="project-desc">
+        Compilador web construido con Angular: análisis léxico, sintáctico y
+        generación de código. Proyecto académico.
+      </p>
+      <a href="https://github.com/daniel-baf/web-compiler"
+         class="project-link"
+         target="_blank" rel="noopener"
+         id="proj-compiler">Ver repo</a>
+    </article>
+
+    <article class="project-card">
+      <div class="project-header">
+        <span class="project-code">JVM</span>
+        <span class="project-lang">Java / Oracle ONE</span>
+      </div>
+      <h3 class="project-name">ORACLE ONE – G7</h3>
+      <p class="project-desc">
+        Proyecto completo del programa Oracle Next Education: desafíos, retos y
+        aplicaciones Java agrupados en un único repositorio.
+      </p>
+      <a href="https://github.com/daniel-baf/ONE-G7-daniel-baf"
+         class="project-link"
+         target="_blank" rel="noopener"
+         id="proj-oracle">Ver repo</a>
+    </article>
+
+    <article class="project-card">
+      <div class="project-header">
+        <span class="project-code">ASM</span>
+        <span class="project-lang">Assembly / x86</span>
+      </div>
+      <h3 class="project-name">ARQUITECTURA 1 – ASM</h3>
+      <p class="project-desc">
+        Colección de programas escritos en lenguaje ensamblador para el curso de
+        Arquitectura del Computador 1 en USAC.
+      </p>
+      <a href="https://github.com/daniel-baf/arqui-1-assembler"
+         class="project-link"
+         target="_blank" rel="noopener"
+         id="proj-asm">Ver repo</a>
+    </article>
+
+    <article class="project-card">
+      <div class="project-header">
+        <span class="project-code">CLI</span>
+        <span class="project-lang">Python / Utils</span>
+      </div>
+      <h3 class="project-name">SYSTEM NUMBER CONVERTER</h3>
+      <p class="project-desc">
+        Conversor de sistemas numéricos (binario, octal, hexadecimal, decimal)
+        con interfaz CLI limpia. Licencia: The Unlicense.
+      </p>
+      <a href="https://github.com/daniel-baf/SystemNumberConverter"
+         class="project-link"
+         target="_blank" rel="noopener"
+         id="proj-converter">Ver repo</a>
+    </article>
+
+  </div>
+
+  <div class="projects-footer">
+    <a href="https://github.com/daniel-baf"
+       class="btn btn-outline"
+       target="_blank" rel="noopener"
+       id="cta-github">
+      ↗ Ver todos en GitHub
+    </a>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     HOBBIES
+════════════════════════════════════════════ -->
+<section id="hobbies" aria-labelledby="hobbies-title" data-scene="desk">
+  <div class="pixel-divider" aria-hidden="true"></div>
+  <p class="section-label">// 06 &gt; hobbies.txt</p>
+  <h2 class="section-title" id="hobbies-title">AFICIONES</h2>
+
+  <div class="hobbies-grid">
+    <div class="hobby-card fade-up">
+      <span class="hobby-label">play</span>
+      <p class="hobby-name">Gaming</p>
+    </div>
+    <div class="hobby-card fade-up">
+      <span class="hobby-label">build</span>
+      <p class="hobby-name">Backend Dev</p>
+    </div>
+    <div class="hobby-card fade-up">
+      <span class="hobby-label">ship</span>
+      <p class="hobby-name">Infra &amp; Cloud</p>
+    </div>
+    <div class="hobby-card fade-up">
+      <span class="hobby-label">learn</span>
+      <p class="hobby-name">AI &amp; MCPs</p>
+    </div>
+    <div class="hobby-card fade-up">
+      <span class="hobby-label">linux</span>
+      <p class="hobby-name">Linux</p>
+    </div>
+    <div class="hobby-card fade-up">
+      <span class="hobby-label">read</span>
+      <p class="hobby-name">Tech Reading</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     CONTACT
+════════════════════════════════════════════ -->
+<section id="contact" aria-labelledby="contact-title" data-scene="pixel">
+  <div class="pixel-divider" aria-hidden="true"></div>
+  <p class="section-label">// 07 &gt; contact.sh</p>
+  <h2 class="section-title" id="contact-title">CONTACTO</h2>
+
+  <div class="contact-box fade-up">
+    <p class="contact-intro">
+      $ echo "¿Tienes un proyecto? Hablemos."
+    </p>
+    <p class="contact-email">
+      <a href="mailto:danibaufu@gmail.com"
+         class="contact-email-link"
+         id="email-link">
+        danibaufu@gmail.com
+      </a>
+    </p>
+    <p class="contact-note">
+      Disponible para proyectos freelance, consultoría de infraestructura y
+      colaboraciones en proyectos open source.
+    </p>
+
+    <div class="contact-links">
+      <a href="https://github.com/daniel-baf"
+         class="social-btn"
+         target="_blank" rel="noopener"
+         id="social-github">
+         GitHub
+      </a>
+      <a href="https://twitter.com/Daniel_Bafue"
+         class="social-btn"
+         target="_blank" rel="noopener"
+         id="social-twitter">
+         Twitter / X
+      </a>
+      <a href="mailto:danibaufu@gmail.com"
+         class="social-btn"
+         id="social-email">
+         Email
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════ -->
+<footer role="contentinfo">
+  <p>
+    &lt;/ <span>daniel-baf</span> &gt; · Built with code, criterio y terminal · Guatemala 2026
+  </p>
+</footer>
+
+<!-- ── SCRIPTS ──────────────────────────────────────────── -->
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+        integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"
+        integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zws3YkjiTuMWFwMEY+zMSCrBMJEiDk882XFg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<!-- App -->
+<script src="assets/js/main.js"></script>
+</body>
+</html>

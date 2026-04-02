@@ -1,0 +1,9 @@
+{
+  "name": "local-stitch-mcp",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@google/stitch-sdk": "^0.0.3",
+    "@modelcontextprotocol/sdk": "^1.29.0"
+  }
+}
