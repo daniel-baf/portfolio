@@ -9,7 +9,6 @@ import NavHeroSection from '../components/NavHeroSection.astro';
 import ProjectsSection from '../components/ProjectsSection.astro';
 import SkillsSection from '../components/SkillsSection.astro';
 import StudiesSection from '../components/StudiesSection.astro';
-import PresentationHud from '../components/presentation/PresentationHud.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { portfolioData } from '../data/portfolio';
 ---
@@ -21,8 +20,6 @@ import { portfolioData } from '../data/portfolio';
   includeGsap={false}
 >
   <CvMountain />
-
-  <PresentationHud variant="cv" />
 
   <main id="cv-document" class="cv-document">
     <NavHeroSection

@@ -603,6 +603,14 @@ body[data-mode='cv'] .footer-links a:focus-visible {
 }
 
 @media (max-width: 720px) {
+  body[data-mode='cv'] #navbar {
+    display: none;
+  }
+
+  body[data-mode='cv'] #hero {
+    padding-top: clamp(2rem, 8vw, 3rem);
+  }
+
   .cv-mountain {
     opacity: calc(0.32 * var(--cv-mountain-fade, 1));
   }

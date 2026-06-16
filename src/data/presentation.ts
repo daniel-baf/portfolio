@@ -32,7 +32,7 @@ export const presentationBeats: PresentationBeat[] = journey.map((chapter) => ({
   cta: chapter.cta,
 }));
 
-export const SCROLL_HEIGHT_PER_WEIGHT = 170; // vh per beat weight unit (mas recorrido = scroll mas calmado)
+const SCROLL_HEIGHT_PER_WEIGHT = 170; // vh per beat weight unit (mas recorrido = scroll mas calmado)
 
 export function getScrollDriverHeight(beats = presentationBeats) {
   const totalWeight = beats.reduce((sum, beat) => sum + beat.weight, 0);

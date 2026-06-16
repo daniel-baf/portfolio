@@ -27,7 +27,7 @@ function weights(active: Partial<Record<SceneKey, number>>): Record<SceneKey, nu
   return { ...base, ...active };
 }
 
-export const sceneStates: Record<SceneKey, SceneState> = {
+const sceneStates: Record<SceneKey, SceneState> = {
   intro: {
     cameraPosition: [0, 2, 12],
     cameraLookAt: [0, 0, 0],
@@ -98,7 +98,7 @@ function lerpVec3(a: [number, number, number], b: [number, number, number], t: n
   return [lerp(a[0], b[0], t), lerp(a[1], b[1], t), lerp(a[2], b[2], t)] as [number, number, number];
 }
 
-export function mixSceneStates(from: SceneKey, to: SceneKey, t: number): SceneState {
+function mixSceneStates(from: SceneKey, to: SceneKey, t: number): SceneState {
   const a = sceneStates[from];
   const b = sceneStates[to];
   const groupWeights = {} as Record<SceneKey, number>;

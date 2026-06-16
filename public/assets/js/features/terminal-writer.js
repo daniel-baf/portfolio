@@ -68,6 +68,29 @@ export function initTerminalWriter(prefersReducedMotion) {
     return line;
   }
 
+  async function playEntry(entry) {
+    if (entry.type === 'pause') {
+      await wait(entry.ms);
+      return;
+    }
+
+    if (entry.type === 'line') {
+      pushInstant(entry.text);
+      await wait(210);
+      return;
+    }
+
+    if (entry.type === 'command') {
+      await typeLine(`$ ${entry.text}`, 'terminal-line command', entry.speed);
+      await wait(280);
+      return;
+    }
+
+    if (entry.type === 'prompt') {
+      await typeLine(entry.text, 'terminal-line-static', entry.speed);
+    }
+  }
+
   async function runTerminalSession() {
     terminalOutput.replaceChildren();
 
@@ -75,28 +98,7 @@ export function initTerminalWriter(prefersReducedMotion) {
       statusLine.textContent = 'status: ejecutando comando en contenedor...';
     }
 
-    for (const entry of script) {
-      if (entry.type === 'pause') {
-        await wait(entry.ms);
-        continue;
-      }
-
-      if (entry.type === 'line') {
-        pushInstant(entry.text);
-        await wait(210);
-        continue;
-      }
-
-      if (entry.type === 'command') {
-        await typeLine(`$ ${entry.text}`, 'terminal-line command', entry.speed);
-        await wait(280);
-        continue;
-      }
-
-      if (entry.type === 'prompt') {
-        await typeLine(entry.text, 'terminal-line-static', entry.speed);
-      }
-    }
+    await script.reduce((sequence, entry) => sequence.then(() => playEntry(entry)), Promise.resolve());
 
     if (statusLine) {
       statusLine.textContent = 'status: docker shell activa';
