@@ -31,8 +31,8 @@ export function initCvIntro() {
   const ease = 'cubic-bezier(0.16, 1, 0.3, 1)';
 
   targets.forEach((el) => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(26px)';
+    // Una sola escritura de estilos por elemento (un reflow, no dos).
+    el.style.cssText = 'opacity:0;transform:translateY(26px);';
   });
 
   // 1. El nucleo rojo remanente colapsa hacia un punto.
@@ -76,8 +76,8 @@ export function initCvIntro() {
   const cleanup = () => {
     overlay.remove();
     targets.forEach((el) => {
-      el.style.opacity = '';
-      el.style.transform = '';
+      // Limpia ambos estilos inline de una (solo seteamos opacity/transform).
+      el.style.cssText = '';
     });
   };
   fade.finished.then(cleanup).catch(cleanup);

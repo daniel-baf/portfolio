@@ -1,0 +1,37 @@
+name: React Doctor
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # Need the base branch so `--scope changed` can diff against it.
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Report-only for now. There is an existing backlog of issues, so this
+      # step must not block PRs (continue-on-error). It scans only what the PR
+      # introduces vs the base branch, keeping new code clean while the backlog
+      # is paid down incrementally. Flip to a blocking gate (drop
+      # continue-on-error) once the backlog is cleared.
+      - name: React Doctor (report-only, changed scope)
+        continue-on-error: true
+        run: npx react-doctor@latest --verbose --scope changed

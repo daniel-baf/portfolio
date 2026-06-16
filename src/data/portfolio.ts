@@ -4,13 +4,17 @@ import { journey } from './journey';
 // TimelineSection.astro ({ date, role, company, desc }). Se omiten intro/outro
 // porque son bookends narrativos, no etapas de carrera.
 const careerItemsFromJourney = journey
-  .filter((chapter) => chapter.id !== 'intro' && chapter.id !== 'outro')
-  .map((chapter) => ({
-    date: chapter.years.toUpperCase(),
-    role: chapter.title,
-    company: chapter.stack.slice(0, 4).join(' · ') || 'Guatemala',
-    desc: chapter.narrative,
-  }))
+  .reduce<Array<{ date: string; role: string; company: string; desc: string }>>((items, chapter) => {
+    // intro/outro son bookends narrativos, no etapas de carrera.
+    if (chapter.id === 'intro' || chapter.id === 'outro') return items;
+    items.push({
+      date: chapter.years.toUpperCase(),
+      role: chapter.title,
+      company: chapter.stack.slice(0, 4).join(' · ') || 'Guatemala',
+      desc: chapter.narrative,
+    });
+    return items;
+  }, []) // una sola pasada: filtra + transforma a la vez
   .reverse(); // mas reciente primero, como el resto del CV
 
 export const portfolioData = {

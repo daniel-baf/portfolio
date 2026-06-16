@@ -50,9 +50,20 @@ export function initTypographyDriver(beats: PresentationBeat[]): TypographyContr
       const slot = BUBBLE_SLOTS[i];
       const bubble = document.createElement('div');
       bubble.className = 'achievement-bubble';
-      bubble.style.left = slot.left;
-      bubble.style.top = slot.top;
-      bubble.innerHTML = `<span class="achievement-bubble__tag">${highlight.tag}</span><span class="achievement-bubble__text">${highlight.text}</span>`;
+      // Una sola escritura de estilos (un reflow en vez de dos).
+      bubble.style.cssText = `left:${slot.left};top:${slot.top};`;
+
+      // Se arma con textContent en vez de innerHTML: los valores vienen de
+      // journey.ts (estaticos hoy), pero textContent mantiene esto fuera de ser
+      // un sink HTML, asi no se vuelve XSS si algun dia se cablea data dinamica.
+      const tagEl = document.createElement('span');
+      tagEl.className = 'achievement-bubble__tag';
+      tagEl.textContent = highlight.tag;
+      const textEl = document.createElement('span');
+      textEl.className = 'achievement-bubble__text';
+      textEl.textContent = highlight.text;
+      bubble.append(tagEl, textEl);
+
       bubblesEl.appendChild(bubble);
       fresh.push(bubble);
     });
