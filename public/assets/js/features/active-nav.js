@@ -1,6 +1,6 @@
 export function initActiveNav() {
   const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-links a');
+  const navLinks = document.querySelectorAll('.nav-links a, .experience-navbar__links a');
   if (!sections.length || !navLinks.length) return;
 
   const navObserver = new IntersectionObserver(
@@ -8,7 +8,9 @@ export function initActiveNav() {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           navLinks.forEach((link) => link.classList.remove('active'));
-          const active = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
+          const active = document.querySelector(
+            `.nav-links a[href="#${entry.target.id}"], .experience-navbar__links a[href="#${entry.target.id}"]`,
+          );
           if (active) active.classList.add('active');
         }
       });

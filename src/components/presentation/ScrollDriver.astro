@@ -1,0 +1,12 @@
+---
+import { getScrollDriverHeight } from '../../data/presentation';
+
+const driverHeight = getScrollDriverHeight();
+---
+
+<div
+  id="scroll-driver"
+  class="scroll-driver"
+  style={`height: ${driverHeight}vh`}
+  aria-hidden="true"
+></div>

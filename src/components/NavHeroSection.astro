@@ -3,7 +3,6 @@ import HeroTerminal from './HeroTerminal.astro';
 
 interface Props {
   navLinks: { href: string; id: string; label: string }[];
-  themes: { theme: string; icon: string; ariaLabel: string; title: string; active: boolean }[];
   hero: {
     tag: string;
     name: string;
@@ -12,11 +11,11 @@ interface Props {
   };
 }
 
-const { navLinks, themes, hero } = Astro.props;
+const { navLinks, hero } = Astro.props;
 ---
 
 <nav id="navbar" role="navigation" aria-label="Navegacion principal">
-  <a href="#hero" class="nav-logo">&lt;daniel-baf /&gt;</a>
+  <a href="/" class="nav-logo">&lt;daniel-baf /&gt;</a>
   <ul class="nav-links">
     {
       navLinks.map((link) => (
@@ -24,20 +23,6 @@ const { navLinks, themes, hero } = Astro.props;
       ))
     }
   </ul>
-  <div class="theme-selector">
-    {
-      themes.map((item) => (
-        <button
-          class={`theme-btn ${item.active ? 'active' : ''}`}
-          data-theme={item.theme}
-          aria-label={item.ariaLabel}
-          title={item.title}
-        >
-          <span class="theme-icon">{item.icon}</span>
-        </button>
-      ))
-    }
-  </div>
 </nav>
 
 <header id="hero" role="banner" data-scene="core">

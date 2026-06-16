@@ -1,0 +1,20 @@
+---
+import { presentationMeta } from '../../data/presentation';
+import PresentationHud from './PresentationHud.astro';
+import TypographyStage from './TypographyStage.astro';
+import ScrollDriver from './ScrollDriver.astro';
+---
+
+<div id="presentation-root" class="presentation-root">
+  <div id="presentationLoading" class="presentation-loading" aria-hidden="false">
+    <div class="presentation-loading__grid"></div>
+    <p class="presentation-loading__copy">{presentationMeta.loadingCopy}</p>
+  </div>
+
+  <canvas id="webgl-canvas" class="presentation-canvas" aria-hidden="true"></canvas>
+
+  <PresentationHud variant="presentation" />
+  <TypographyStage />
+</div>
+
+<ScrollDriver />
