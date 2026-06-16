@@ -6,6 +6,7 @@ import { initScrollTimeline } from './scroll-timeline';
 import { initSmoothScroll } from './smooth-scroll';
 import { initThreeScene } from './three-scene';
 import { initTypographyDriver } from './typography-driver';
+import { initWorldConsume } from './world-consume';
 
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -37,6 +38,8 @@ function watchThemeColor(scene: ReturnType<typeof initThreeScene>) {
 }
 
 export function initPresentation() {
+  initWorldConsume();
+
   if (prefersReducedMotion) {
     window.location.replace('/cv');
     return;

@@ -19,7 +19,7 @@ export interface ThreeSceneController {
 
 function getThemePrimaryColor() {
   const value = getComputedStyle(document.documentElement).getPropertyValue('--primary').trim();
-  return value || '#FF851B';
+  return value || '#E62815';
 }
 
 function createParticleField(count: number, spread: number) {
@@ -349,19 +349,19 @@ export function initThreeScene(
       alpha: false,
       powerPreference: initialQuality.highQuality ? 'high-performance' : 'low-power',
     });
-    renderer.setClearColor(0x050505, 1);
+    renderer.setClearColor(0x1c1d22, 1);
   } catch {
     return null;
   }
 
   const scene = new THREE.Scene();
-  scene.fog = new THREE.FogExp2(0x050505, 0.018);
+  scene.fog = new THREE.FogExp2(0x1c1d22, 0.018);
 
   const camera = new THREE.PerspectiveCamera(55, 1, 0.1, 100);
   camera.position.set(0, 2, 12);
 
-  const ambient = new THREE.AmbientLight(0xff851b, 0.35);
-  const point = new THREE.PointLight(0xff851b, 1.2, 40);
+  const ambient = new THREE.AmbientLight(0x8b96a0, 0.4);
+  const point = new THREE.PointLight(0xe62815, 1.2, 40);
   point.position.set(4, 6, 8);
   scene.add(ambient, point);
 

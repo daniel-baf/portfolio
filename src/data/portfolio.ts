@@ -91,6 +91,7 @@ export const portfolioData = {
         name: 'CALCULO DE VIGAS ESTRUCTURALES',
         desc: 'Sistema para ingenieros civiles que calcula vigas con cargas gravitacionales, flexiones y momentos. Proyecto freelance en desarrollo activo.',
         href: 'https://github.com/daniel-baf/calculo-vigas-estructurales',
+        demo: 'https://daniel-baf.github.io/calculo-vigas-estructurales/',
         id: 'proj-vigas',
       },
       {

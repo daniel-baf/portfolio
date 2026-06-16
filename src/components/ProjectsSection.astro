@@ -7,6 +7,7 @@ interface ProjectItem {
   name: string;
   desc: string;
   href: string;
+  demo?: string;
   id: string;
 }
 
@@ -35,7 +36,16 @@ const { projects } = Astro.props;
           </div>
           <h3 class="project-name">{project.name}</h3>
           <p class="project-desc">{project.desc}</p>
-          <a href={project.href} class="project-link" target="_blank" rel="noopener" id={project.id}>Ver repo</a>
+          <div class="project-links">
+            <a href={project.href} class="project-link" target="_blank" rel="noopener" id={project.id}>Ver repo</a>
+            {
+              project.demo && (
+                <a href={project.demo} class="project-link" target="_blank" rel="noopener" id={`${project.id}-demo`}>
+                  Ver pagina web
+                </a>
+              )
+            }
+          </div>
         </article>
       ))
     }

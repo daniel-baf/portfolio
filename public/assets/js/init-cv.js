@@ -7,8 +7,10 @@ import { initSkillPopup } from './features/skill-popup.js';
 import { initTypewriter } from './features/typewriter.js';
 import { initTerminalWriter } from './features/terminal-writer.js';
 import { initNavbarScroll } from './features/navbar-scroll.js';
+import { initCvIntro } from './features/cv-intro.js';
 
 export function initCv() {
+  initCvIntro();
   const { html } = initThemeSystem();
   initNavbarScroll();
   initTypewriter();

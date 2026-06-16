@@ -2,6 +2,7 @@
 import AboutSection from '../components/AboutSection.astro';
 import CareerSection from '../components/CareerSection.astro';
 import ContactSection from '../components/ContactSection.astro';
+import CvMountain from '../components/CvMountain.astro';
 import FooterSection from '../components/FooterSection.astro';
 import HobbiesSection from '../components/HobbiesSection.astro';
 import NavHeroSection from '../components/NavHeroSection.astro';
@@ -19,6 +20,8 @@ import { portfolioData } from '../data/portfolio';
   mode="cv"
   includeGsap={false}
 >
+  <CvMountain />
+
   <PresentationHud variant="cv" />
 
   <main id="cv-document" class="cv-document">
@@ -36,4 +39,6 @@ import { portfolioData } from '../data/portfolio';
   </main>
 
   <FooterSection footer={portfolioData.footer} />
+
+  <script is:inline type="module" src="/assets/js/cv-mountain.js"></script>
 </BaseLayout>
