@@ -1,3 +1,18 @@
+import { journey } from './journey';
+
+// Adapta los capitulos de la historia (fuente de verdad) al shape que espera
+// TimelineSection.astro ({ date, role, company, desc }). Se omiten intro/outro
+// porque son bookends narrativos, no etapas de carrera.
+const careerItemsFromJourney = journey
+  .filter((chapter) => chapter.id !== 'intro' && chapter.id !== 'outro')
+  .map((chapter) => ({
+    date: chapter.years.toUpperCase(),
+    role: chapter.title,
+    company: chapter.stack.slice(0, 4).join(' · ') || 'Guatemala',
+    desc: chapter.narrative,
+  }))
+  .reverse(); // mas reciente primero, como el resto del CV
+
 export const portfolioData = {
   navLinks: [
     { href: '#about', id: 'nav-about', label: 'about' },
@@ -7,12 +22,6 @@ export const portfolioData = {
     { href: '#projects', id: 'nav-projects', label: 'projects' },
     { href: '#hobbies', id: 'nav-hobbies', label: 'hobbies' },
     { href: '#contact', id: 'nav-contact', label: 'contact' },
-  ],
-  themes: [
-    { theme: 'terminal-orange', icon: '🟠', ariaLabel: 'Tema naranja terminal', title: 'Terminal Orange', active: true },
-    { theme: 'terminal-red', icon: '🔴', ariaLabel: 'Tema rojo terminal', title: 'Terminal Red', active: false },
-    { theme: 'terminal-green', icon: '🟢', ariaLabel: 'Tema verde terminal', title: 'Terminal Green', active: false },
-    { theme: 'terminal-classic', icon: '⚪', ariaLabel: 'Tema clasico monocromo', title: 'Classic Monochrome', active: false },
   ],
   hero: {
     tag: 'Backend engineer · cloud track · futurist computing',
@@ -38,32 +47,8 @@ export const portfolioData = {
   career: {
     sectionLabel: '// 02 > career.log',
     sectionTitle: 'TRAYECTORIA',
-    items: [
-      {
-        date: '2025 → PRESENTE',
-        role: 'PROJECT LEAD',
-        company: 'Liderazgo tecnico · Guatemala',
-        desc: 'Coordinacion de tareas y seguimiento del equipo, gestion de tickets, apoyo en evaluacion tecnica de talento y acompanamiento del delivery. Tambien con responsabilidad sobre infraestructura cloud y automatizacion de despliegues.',
-      },
-      {
-        date: '2024',
-        role: 'BACKEND DEVELOPER',
-        company: 'Desarrollo backend · Guatemala',
-        desc: 'Diseno e implementacion de APIs, integracion con bases de datos y desarrollo de modulos backend para sistemas empresariales, con foco en logica de negocio, servicios y procesos internos.',
-      },
-      {
-        date: '2022 → PRESENTE',
-        role: 'FREELANCE DEVELOPER',
-        company: 'Independiente · Remoto',
-        desc: 'Proyectos de software a medida: sistema de calculo de vigas estructurales para ingenieria civil, ERP para ONG (gestion de pedidos, productos, clientes y reportes). Atencion directa a clientes y entrega end-to-end.',
-      },
-      {
-        date: '2019 → DESDE LA U',
-        role: 'INICIOS PROGRAMANDO',
-        company: 'Base tecnica y formacion universitaria',
-        desc: 'Formacion en algoritmos, estructuras de datos, programacion orientada a objetos, desarrollo web y arquitectura. Primeros proyectos academicos y personales en Java, C++, Python y bajo nivel desde la universidad.',
-      },
-    ],
+    // Derivado de src/data/journey.ts para mantener coherencia con la historia 3D.
+    items: careerItemsFromJourney,
   },
   studies: {
     sectionLabel: '// 03 > education.db',

@@ -1,94 +1,19 @@
 ---
-import AboutSection from "../components/AboutSection.astro";
-import CareerSection from "../components/CareerSection.astro";
-import ContactSection from "../components/ContactSection.astro";
-import FooterSection from "../components/FooterSection.astro";
-import HobbiesSection from "../components/HobbiesSection.astro";
-import NavHeroSection from "../components/NavHeroSection.astro";
-import ProjectsSection from "../components/ProjectsSection.astro";
-import SkillsSection from "../components/SkillsSection.astro";
-import StudiesSection from "../components/StudiesSection.astro";
-import VideoStage from "../components/VideoStage.astro";
-import { portfolioData } from "../data/portfolio";
+import PresentationShell from '../components/presentation/PresentationShell.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { presentationMeta } from '../data/presentation';
 ---
 
-<html lang="es" data-theme="terminal-orange">
-        <head>
-                <meta charset="UTF-8" />
-                <meta
-                        name="viewport"
-                        content="width=device-width, initial-scale=1.0"
-                />
-                <meta
-                        name="description"
-                        content="Daniel Eduardo Bautista Fuentes - Backend Developer, Cloud Infrastructure Engineer y enfoque actual en GCP. Portfolio personal."
-                />
-                <meta name="author" content="Daniel Eduardo Bautista Fuentes" />
-                <meta
-                        property="og:title"
-                        content="Daniel Bautista | Dev Portfolio"
-                />
-                <meta
-                        property="og:description"
-                        content="Backend Developer, Cloud Infrastructure Engineer y especializacion actual en GCP"
-                />
-                <meta property="og:type" content="website" />
-                <title>Daniel Bautista | Dev Portfolio</title>
+<BaseLayout
+  title={presentationMeta.title}
+  description={presentationMeta.description}
+  mode="presentation"
+>
+  <PresentationShell />
+</BaseLayout>
 
-                <link rel="preconnect" href="https://fonts.googleapis.com" />
-                <link
-                        rel="preconnect"
-                        href="https://fonts.gstatic.com"
-                        crossorigin
-                />
-                <link
-                        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Manrope:wght@400;500;600&family=Inter:wght@400;500;600&display=swap"
-                        rel="stylesheet"
-                />
+<script>
+  import { initPresentation } from '../presentation/init';
 
-                <link rel="stylesheet" href="/assets/css/style.css" />
-        </head>
-        <body>
-                <div id="loadingIntro" class="loading-intro" aria-hidden="true">
-                        <div class="loading-intro-map">
-                                <div class="loading-intro-grid"></div>
-                                <div class="loading-intro-target">
-                                        <span class="loading-intro-dot"></span>
-                                        <span class="loading-intro-label">GUATEMALA</span>
-                                </div>
-                        </div>
-                        <p class="loading-intro-copy">syncing satellite feed...</p>
-                </div>
-
-                <VideoStage />
-
-                <NavHeroSection
-                        navLinks={portfolioData.navLinks}
-                        themes={portfolioData.themes}
-                        hero={portfolioData.hero}
-                />
-                <AboutSection about={portfolioData.about} />
-                <CareerSection career={portfolioData.career} />
-                <StudiesSection studies={portfolioData.studies} />
-                <SkillsSection skills={portfolioData.skills} />
-                <ProjectsSection projects={portfolioData.projects} />
-                <HobbiesSection hobbies={portfolioData.hobbies} />
-                <ContactSection contact={portfolioData.contact} />
-                <FooterSection footer={portfolioData.footer} />
-
-                <script
-                        is:inline
-                        src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
-                        integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
-                        crossorigin="anonymous"
-                        referrerpolicy="no-referrer"></script>
-                <script
-                        is:inline
-                        src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"
-                        integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg=="
-                        crossorigin="anonymous"
-                        referrerpolicy="no-referrer"></script>
-
-                <script type="module" src="/assets/js/main.js"></script>
-        </body>
-</html>
+  initPresentation();
+</script>
