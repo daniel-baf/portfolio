@@ -197,8 +197,15 @@ body[data-mode='presentation'] {
   max-width: 22ch;
 }
 
-.typography-stage__cta {
+.typography-stage__actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: center;
   margin-top: 1.25rem;
+}
+
+.typography-stage__cta {
   pointer-events: auto;
 }
 

@@ -22,6 +22,7 @@ export function initTypographyDriver(beats: PresentationBeat[]): TypographyContr
   const secondaryEl = document.getElementById('beatSecondary');
   const labelEl = document.getElementById('beatLabel');
   const ctaEl = document.getElementById('beatCta') as HTMLAnchorElement | null;
+  const contactBtnEl = document.getElementById('beatContact');
   const progressEl = document.getElementById('presentationProgress');
   const bubblesEl = document.getElementById('achievementBubbles');
 
@@ -105,6 +106,9 @@ export function initTypographyDriver(beats: PresentationBeat[]): TypographyContr
         ctaEl.hidden = true;
       }
     }
+
+    // El boton de contacto acompaña al CTA final (mismo beat con cta).
+    if (contactBtnEl) contactBtnEl.hidden = !beat.cta;
   }
 
   function setProgressLabel(progress: number) {
