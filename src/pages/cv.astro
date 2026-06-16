@@ -1,0 +1,39 @@
+---
+import AboutSection from '../components/AboutSection.astro';
+import CareerSection from '../components/CareerSection.astro';
+import ContactSection from '../components/ContactSection.astro';
+import FooterSection from '../components/FooterSection.astro';
+import HobbiesSection from '../components/HobbiesSection.astro';
+import NavHeroSection from '../components/NavHeroSection.astro';
+import ProjectsSection from '../components/ProjectsSection.astro';
+import SkillsSection from '../components/SkillsSection.astro';
+import StudiesSection from '../components/StudiesSection.astro';
+import PresentationHud from '../components/presentation/PresentationHud.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { portfolioData } from '../data/portfolio';
+---
+
+<BaseLayout
+  title="Daniel Bautista | CV"
+  description="CV estatico de Daniel Bautista - Backend Developer, Cloud Infrastructure y GCP."
+  mode="cv"
+  includeGsap={false}
+>
+  <PresentationHud variant="cv" />
+
+  <main id="cv-document" class="cv-document">
+    <NavHeroSection
+      navLinks={portfolioData.navLinks}
+      hero={portfolioData.hero}
+    />
+    <AboutSection about={portfolioData.about} />
+    <CareerSection career={portfolioData.career} />
+    <StudiesSection studies={portfolioData.studies} />
+    <SkillsSection skills={portfolioData.skills} />
+    <ProjectsSection projects={portfolioData.projects} />
+    <HobbiesSection hobbies={portfolioData.hobbies} />
+    <ContactSection contact={portfolioData.contact} />
+  </main>
+
+  <FooterSection footer={portfolioData.footer} />
+</BaseLayout>

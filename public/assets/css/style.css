@@ -126,6 +126,42 @@
   --pixel-shadow: 3px 3px 0 var(--primary-dim);
 }
 
+/* Sunset - paleta calida retro (#311f04 / #575c13 / #ff704b / #ffd284 / #fffbd2) */
+[data-theme='terminal-sunset'] {
+  --primary: #ff704b;
+  --primary-container: #ff704b;
+  --primary-glow: rgba(255, 112, 75, 0.5);
+  --primary-dim: rgba(255, 112, 75, 0.14);
+  --on-primary: #311f04;
+  --on-primary-container: #fffbd2;
+  --secondary: #ffd284;
+  --secondary-container: #ffd284;
+  --secondary-glow: rgba(255, 210, 132, 0.4);
+  --tertiary: #575c13;
+  --on-tertiary: #fffbd2;
+  --surface: #1a1206;
+  --surface-dim: #150e04;
+  --surface-container-lowest: #120c03;
+  --surface-container-low: #20160a;
+  --surface-container: #281c0c;
+  --surface-container-high: #32230e;
+  --surface-container-highest: #3d2b12;
+  --surface-bright: #4a3416;
+  --on-surface: #fffbd2;
+  --on-surface-variant: #ffd284;
+  --text-dim: #b89a6a;
+  --text-soft: #ffe9bf;
+  --outline: #575c13;
+  --outline-variant: #3a2a10;
+  --border: rgba(255, 112, 75, 0.2);
+  --border-strong: rgba(255, 112, 75, 0.42);
+  --glow: 0 0 18px var(--primary-glow);
+  --amber-glow: 0 0 15px var(--secondary-glow);
+  --pixel-shadow: 3px 3px 0 var(--primary-dim);
+  --bg: #120c03;
+  --bg-2: #1a1206;
+}
+
 /* ══════════════════════════════════════════════════════════
    GLOBAL RESET & BASE STYLES
    ════════════════════════════════════════════════════════ */

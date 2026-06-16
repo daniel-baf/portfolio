@@ -1,0 +1,78 @@
+---
+import { presentationBeats } from '../../data/presentation';
+
+interface Props {
+  variant: 'presentation' | 'cv';
+}
+
+const { variant } = Astro.props;
+const isCv = variant === 'cv';
+const totalBeats = presentationBeats.length;
+---
+
+<div class="presentation-hud" role="region" aria-label="Controles de presentacion">
+  <div class="presentation-hud__cluster">
+    {
+      isCv ? (
+        <>
+          <a href="/" class="btn btn-primary" id="cta-enter-presentation">
+            Presentacion
+          </a>
+          <button type="button" class="btn btn-outline" id="cta-print-cv">
+            Imprimir CV
+          </button>
+        </>
+      ) : (
+        <a href="/cv" class="btn btn-outline" id="cta-view-cv">
+          VER CV
+        </a>
+      )
+    }
+  </div>
+
+  {
+    !isCv && (
+      <>
+        <div class="presentation-hud__progress" aria-live="polite">
+          <span class="presentation-hud__progress-label">Beat</span>
+          <span class="presentation-hud__progress-value" id="presentationProgress">1/{totalBeats}</span>
+        </div>
+
+        <button
+          type="button"
+          class="presentation-hud__btn"
+          id="presentationMuteToggle"
+          aria-pressed="true"
+          title="Silenciar ambiente"
+        >
+          MUTE
+        </button>
+
+        <button
+          type="button"
+          class="presentation-hud__btn"
+          id="presentationQualityToggle"
+          aria-pressed="false"
+          title="Calidad grafica"
+        >
+          QUALITY
+        </button>
+
+        <button
+          type="button"
+          class="presentation-hud__btn"
+          id="presentationHelpToggle"
+          aria-expanded="false"
+          aria-controls="presentationHelpPanel"
+          title="Ayuda"
+        >
+          HELP
+        </button>
+
+        <div class="presentation-hud__help" id="presentationHelpPanel" hidden>
+          <p id="presentationHelpCopy"></p>
+        </div>
+      </>
+    )
+  }
+</div>

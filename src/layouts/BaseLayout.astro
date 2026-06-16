@@ -1,0 +1,39 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  mode: 'presentation' | 'cv';
+}
+
+const { title, description, mode } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es" data-theme="terminal-sunset">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="author" content="Daniel Eduardo Bautista Fuentes" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <title>{title}</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Manrope:wght@400;500;600&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    {mode === 'presentation' && <link rel="stylesheet" href="/assets/css/presentation.css" />}
+    {mode === 'cv' && <link rel="stylesheet" href="/assets/css/cv.css" />}
+  </head>
+  <body data-mode={mode}>
+    <slot />
+
+    {mode === 'cv' && <script type="module" src="/assets/js/main.js"></script>}
+  </body>
+</html>

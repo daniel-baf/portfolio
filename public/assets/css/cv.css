@@ -1,0 +1,179 @@
+/* CV mode - static, print-friendly */
+
+body[data-mode='cv'] {
+  background: var(--bg);
+}
+
+body[data-mode='cv'] .video-stage,
+body[data-mode='cv'] #binaryCanvas,
+body[data-mode='cv'] .loading-intro,
+body[data-mode='cv'] .scroll-indicator {
+  display: none !important;
+}
+
+.cv-document {
+  position: relative;
+  z-index: 2;
+}
+
+body[data-mode='cv'] #hero {
+  min-height: auto;
+  padding-top: 5rem;
+}
+
+body[data-mode='cv'] .hero-terminal,
+body[data-mode='cv'] .hero-bg {
+  display: none;
+}
+
+body[data-mode='cv'] .hero-content {
+  grid-template-columns: 1fr;
+}
+
+body[data-mode='cv'] .hero-main {
+  grid-template-columns: 1fr;
+}
+
+body[data-mode='cv'] section {
+  scroll-margin-top: 4.5rem;
+}
+
+/* ──────────────────────────────────────────────────────────
+   MINIMALISTA · DIRECTO · SERIO
+   Capa que calma la decoracion "terminal brutalist" SOLO en el CV.
+   La presentacion 3D conserva todos sus efectos.
+   ────────────────────────────────────────────────────────── */
+
+/* 1. Neutraliza glows y sombras decorativas via tokens */
+body[data-mode='cv'] {
+  --glow: none;
+  --amber-glow: none;
+  --pixel-shadow: none;
+  --primary-glow: transparent;
+  --border: rgba(255, 210, 132, 0.14);
+  --border-strong: rgba(255, 210, 132, 0.28);
+}
+
+/* 2. Sin text-shadow ni box-shadow brillantes en el documento */
+body[data-mode='cv'] .section-title,
+body[data-mode='cv'] .section-label,
+body[data-mode='cv'] .hero-name,
+body[data-mode='cv'] .timeline-role,
+body[data-mode='cv'] .skill-name,
+body[data-mode='cv'] .project-name,
+body[data-mode='cv'] .project-code,
+body[data-mode='cv'] .contact-email-link,
+body[data-mode='cv'] .metric-value {
+  text-shadow: none !important;
+}
+
+body[data-mode='cv'] .skill-card,
+body[data-mode='cv'] .project-card,
+body[data-mode='cv'] .hobby-card,
+body[data-mode='cv'] .contact-box,
+body[data-mode='cv'] .timeline-item,
+body[data-mode='cv'] .tag-button,
+body[data-mode='cv'] .social-btn,
+body[data-mode='cv'] .btn {
+  box-shadow: none !important;
+}
+
+/* 3. Apaga las animaciones de "glitch / virus / escaneo / parpadeo" */
+body[data-mode='cv'] .timeline-item,
+body[data-mode='cv'] .timeline-dot,
+body[data-mode='cv'] .section-title,
+body[data-mode='cv'] .typed-cursor,
+body[data-mode='cv'] .scroll-arrow,
+body[data-mode='cv'] [class*='glitch'],
+body[data-mode='cv'] [class*='virus'] {
+  animation: none !important;
+}
+
+/* 4. Tipografia mas sobria: menos tracking agresivo */
+body[data-mode='cv'] .section-label,
+body[data-mode='cv'] .timeline-date,
+body[data-mode='cv'] .skill-label,
+body[data-mode='cv'] .project-lang {
+  letter-spacing: 0.04em;
+}
+
+body[data-mode='cv'] .section-title,
+body[data-mode='cv'] .hero-name {
+  letter-spacing: -0.01em;
+}
+
+/* 5. Mas aire entre secciones, ritmo de lectura calmado */
+body[data-mode='cv'] section {
+  padding-block: 4.5rem;
+}
+
+body[data-mode='cv'] .hero-summary,
+body[data-mode='cv'] .timeline-desc,
+body[data-mode='cv'] .contact-note {
+  color: var(--text-soft);
+  line-height: 1.7;
+  max-width: 60ch;
+}
+
+/* 6. Cards planas con un borde fino, hover discreto (sin glow) */
+body[data-mode='cv'] .skill-card,
+body[data-mode='cv'] .project-card,
+body[data-mode='cv'] .hobby-card,
+body[data-mode='cv'] .contact-box {
+  border: 1px solid var(--border);
+  background: var(--surface-container-low);
+  transition: border-color var(--transition), transform var(--transition);
+}
+
+body[data-mode='cv'] .project-card:hover,
+body[data-mode='cv'] .skill-card:hover,
+body[data-mode='cv'] .hobby-card:hover {
+  border-color: var(--border-strong);
+  transform: none;
+}
+
+/* 7. El acento coral se usa con moderacion: titulos en texto claro,
+      coral reservado a labels y enlaces */
+body[data-mode='cv'] .section-title,
+body[data-mode='cv'] .hero-name,
+body[data-mode='cv'] .timeline-role,
+body[data-mode='cv'] .project-name,
+body[data-mode='cv'] .skill-name {
+  color: var(--on-surface);
+}
+
+/* 8. Cursor del typewriter estatico (sin parpadeo) para tono serio */
+body[data-mode='cv'] .typed-cursor {
+  opacity: 0.5;
+}
+
+@media print {
+  .experience-hud,
+  #navbar,
+  .theme-selector,
+  .hero-cta,
+  .scroll-indicator,
+  footer .footer-links {
+    display: none !important;
+  }
+
+  body[data-mode='cv'] {
+    background: #fff;
+    color: #111;
+  }
+
+  body[data-mode='cv'] #hero {
+    padding-top: 0;
+    break-after: avoid;
+  }
+
+  body[data-mode='cv'] section {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  body[data-mode='cv'] a {
+    color: #111;
+    text-decoration: underline;
+  }
+}
