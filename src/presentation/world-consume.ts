@@ -34,7 +34,7 @@ export function initWorldConsume() {
       const link = target?.closest?.('a');
       if (!link || !CV_LINK_IDS.includes(link.id)) return;
 
-      const href = link.getAttribute('href') || '/cv';
+      const href = link.getAttribute('href') || (import.meta.env.BASE_URL + '/cv');
       event.preventDefault();
       if (consuming) return;
       consuming = true;

@@ -1,9 +1,13 @@
+---
+const base = import.meta.env.BASE_URL;
+---
+
 <div class="about-avatar-wrap fade-up" id="aboutAvatarCard">
   <div class="about-avatar-flip" aria-hidden="true">
     <picture>
-      <source srcset="/assets/images/avatar.webp" type="image/webp" />
+      <source srcset={`${base}/assets/images/avatar.webp`} type="image/webp" />
       <img
-        src="/assets/images/avatar.png"
+        src={`${base}/assets/images/avatar.png`}
         alt="Avatar pixel art de Daniel Eduardo Bautista Fuentes"
         class="about-avatar about-avatar-front"
         width="200"
@@ -11,9 +15,9 @@
       />
     </picture>
     <picture>
-      <source srcset="/assets/images/IMG_20240627_102303.webp" type="image/webp" />
+      <source srcset={`${base}/assets/images/IMG_20240627_102303.webp`} type="image/webp" />
       <img
-        src="/assets/images/IMG_20240627_102303.jpg"
+        src={`${base}/assets/images/IMG_20240627_102303.jpg`}
         alt="Foto de Daniel Eduardo Bautista Fuentes"
         class="about-avatar about-avatar-back"
         width="200"

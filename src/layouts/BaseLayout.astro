@@ -6,6 +6,7 @@ interface Props {
 }
 
 const { title, description, mode } = Astro.props;
+const base = import.meta.env.BASE_URL;
 ---
 
 <!doctype html>
@@ -27,13 +28,13 @@ const { title, description, mode } = Astro.props;
       rel="stylesheet"
     />
 
-    <link rel="stylesheet" href="/assets/css/style.css" />
-    {mode === 'presentation' && <link rel="stylesheet" href="/assets/css/presentation.css" />}
-    {mode === 'cv' && <link rel="stylesheet" href="/assets/css/cv.css" />}
+    <link rel="stylesheet" href={`${base}/assets/css/style.css`} />
+    {mode === 'presentation' && <link rel="stylesheet" href={`${base}/assets/css/presentation.css`} />}
+    {mode === 'cv' && <link rel="stylesheet" href={`${base}/assets/css/cv.css`} />}
   </head>
   <body data-mode={mode}>
     <slot />
 
-    {mode === 'cv' && <script type="module" src="/assets/js/main.js"></script>}
+    {mode === 'cv' && <script type="module" src={`${base}/assets/js/main.js`}</script>}
   </body>
 </html>

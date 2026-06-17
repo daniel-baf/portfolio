@@ -8,6 +8,7 @@ interface Props {
 const { variant } = Astro.props;
 const isCv = variant === 'cv';
 const totalBeats = presentationBeats.length;
+const base = import.meta.env.BASE_URL;
 ---
 
 <div class="presentation-hud" role="region" aria-label="Controles de presentacion">
@@ -15,7 +16,7 @@ const totalBeats = presentationBeats.length;
     {
       isCv ? (
         <>
-          <a href="/" class="btn btn-primary" id="cta-enter-presentation">
+          <a href={`${base}/`} class="btn btn-primary" id="cta-enter-presentation">
             Presentacion
           </a>
           <button type="button" class="btn btn-outline" id="cta-print-cv">
@@ -23,7 +24,7 @@ const totalBeats = presentationBeats.length;
           </button>
         </>
       ) : (
-        <a href="/cv" class="btn btn-outline" id="cta-view-cv">
+        <a href={`${base}/cv`} class="btn btn-outline" id="cta-view-cv">
           VER CV
         </a>
       )

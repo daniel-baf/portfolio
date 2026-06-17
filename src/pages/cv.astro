@@ -11,6 +11,8 @@ import SkillsSection from '../components/SkillsSection.astro';
 import StudiesSection from '../components/StudiesSection.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { portfolioData } from '../data/portfolio';
+
+const base = import.meta.env.BASE_URL;
 ---
 
 <BaseLayout
@@ -37,5 +39,5 @@ import { portfolioData } from '../data/portfolio';
 
   <FooterSection footer={portfolioData.footer} />
 
-  <script is:inline type="module" src="/assets/js/cv-mountain.js"></script>
+  <script is:inline type="module" src={`${base}/assets/js/cv-mountain.js`}></script>
 </BaseLayout>

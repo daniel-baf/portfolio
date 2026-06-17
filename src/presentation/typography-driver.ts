@@ -112,7 +112,7 @@ export function initTypographyDriver(beats: PresentationBeat[]): TypographyContr
       if (beat.cta) {
         ctaEl.hidden = false;
         ctaEl.textContent = beat.cta.label;
-        ctaEl.href = beat.cta.href;
+        ctaEl.href = beat.cta.href.startsWith('http') ? beat.cta.href : (import.meta.env.BASE_URL + '/' + beat.cta.href.replace(/^\//, ''));
       } else {
         ctaEl.hidden = true;
       }

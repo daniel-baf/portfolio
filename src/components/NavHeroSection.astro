@@ -12,10 +12,11 @@ interface Props {
 }
 
 const { navLinks, hero } = Astro.props;
+const base = import.meta.env.BASE_URL;
 ---
 
 <nav id="navbar" role="navigation" aria-label="Navegacion principal">
-  <a href="/" class="nav-logo">&lt;daniel-baf /&gt;</a>
+  <a href={`${base}/`} class="nav-logo">&lt;daniel-baf /&gt;</a>
   <ul class="nav-links">
     {
       navLinks.map((link) => (
@@ -35,9 +36,9 @@ const { navLinks, hero } = Astro.props;
 
         <div class="hero-avatar-frame fade-up">
           <picture>
-            <source srcset="/assets/images/avatar.webp" type="image/webp" />
+            <source srcset={`${base}/assets/images/avatar.webp`} type="image/webp" />
             <img
-              src="/assets/images/avatar.png"
+              src={`${base}/assets/images/avatar.png`}
               alt="Avatar pixel art de Daniel Eduardo Bautista Fuentes"
               class="hero-avatar"
               width="160"
